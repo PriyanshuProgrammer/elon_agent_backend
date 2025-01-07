@@ -55,3 +55,6 @@ def test():
     return jsonify({
         "message":"Server is Working...."
     })
+
+if __name__ == '__main__':
+    app.run()
