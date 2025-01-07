@@ -8,6 +8,7 @@ llm = HuggingFaceEndpoint(
     repo_id = 'mistralai/Mistral-7B-Instruct-v0.2',
     max_length = 10, 
     temperature = 0.5,
+    max_tokens=50 
 )
 
 prompt_template_name = PromptTemplate(
@@ -36,7 +37,8 @@ prompt_template_name = PromptTemplate(
 chain = LLMChain(llm=llm, prompt = prompt_template_name)
 
 def Agent(query):
-    return chain.run(query)
+    response =  chain.run(query)
+    return response[:1000]
 
 app = Flask(__name__)
 
